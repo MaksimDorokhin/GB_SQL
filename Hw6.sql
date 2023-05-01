@@ -41,16 +41,16 @@ SELECT sec_to_time_format(123456);
 DELIMITER $$
 CREATE PROCEDURE even_numbers()
 BEGIN
-	DECLARE n INT DEFAULT 5;
+	DECLARE n INT DEFAULT 2;
     DECLARE res VARCHAR(50) DEFAULT '';
     
     REPEAT
 		SET res = CONCAT(res, ' ', n);
-        SET n = n - 1;
-        UNTIL n < 1
+        SET n = n + 2;
+        UNTIL n > 10
 	END REPEAT;
     SELECT res;
 END $$
-DELIMITER ; -- говорит sql что сейчас было много запросов которые выполняются в одном большом
+DELIMITER ;
 
-CALL repeat_proc();
+CALL even_numbers();
